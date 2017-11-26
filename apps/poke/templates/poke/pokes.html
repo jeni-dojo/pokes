@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pokes</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'poke/style.css' %}" />
+	
+</head>
+<body>
+
+	{% if messages %}
+		<ul class="messages">
+    	{% for message in messages %}
+    		<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    	{% endfor %}
+		</ul>
+	{% endif %}
+	
+	<div class="welcome_message">
+		<h2>Welcome, {{ user_name }}!</h2>
+
+	
+		{% if number_of_pokers == 0 %}
+			<h4>You have not been poked...yet</h4>
+		{% elif number_of_pokers == 1 %}
+			<h4>1 person poked you!</h4>
+		{% else %}
+			<h4>{{number_of_pokers}} people poked you!</h4>
+		{% endif %}
+	</div>
+
+
+
+	
+
+
+	<div class="user_navigation_links">
+		<a href="logout"><button>Logout</button></a>
+		<a href="users/{{request.session.user_id}}/edit"><button>Edit User</button></a>
+	</div>
+
+	
+		{% if pokers|length > 0 %}
+			<div class="my_pokes">
+				{% for poker in pokers %}
+					{{poker.name}} poked you {{poker.times_poked}} times.<br>
+
+				{% endfor %}
+			</div>
+		{% endif %}
+	
+	
+	<br>
+	<br>
+
+
+	<table class="poke_table">
+		<h4>People you may want to poke:</h4>
+		<tr>
+			<th>Name</th>
+		    <th>Alias</th>
+		    <th>Email Address</th>
+		    <th>Poke History</th>
+		    <th>Action</th>
+		</tr>
+
+		{% for user in display_users %}
+			<tr>
+			  	<td>{{user.name}}</td>
+			    <td>{{user.alias}}</td>
+			    <td>{{user.email}}</td>
+			    <td>{{user.poke_count}} pokes</td>
+			    <td><a href="/users/{{request.session.user_id}}/poke/{{user.id}}"><button>Poke</button></a></td>
+		  	</tr>
+		{% endfor %}
+
+	</table>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+body {
+
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+
+.register_form {
+	display: inline-block;
+	width: 40%
+
+}
+
+.login_form {
+	display: inline-block;
+	width: 40%
+    background-color: blue;
+
+}
+
+.register_form, .login_form {
+	vertical-align: top;
+}
+
+.welcome_message {
+    margin-top: 20px;
+    /*margin-left: 30px;*/
+    display: inline-block;
+    width: 40%;
+    text-align: left;
+
+}
+
+.user_navigation_links {
+    margin-top: 20px;
+    display: inline-block;
+    width: 40%;
+    text-align: right;
+
+}
+
+.welcome_message, .user_navigatoin_links {
+    vertical-align: top;
+
+}
+
+.my_pokes {
+    /*margin-left: 30px;*/
+    border-style: solid;
+    border-width: 2px;
+    display: inline-block;
+    width:30%;
+    vertical-align: top;
+    padding: 10px;
+
+}
+
+.poke_table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.poke_table {
+    
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(odd) {
+    background-color: #dddddd;
+}
